@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/Level-Select.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Thumbnail-1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Backgrounds/backgroundColorFall.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Thumbnail-2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Boxes/LevelSelectBox.tres" type="StyleBox" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="Level-Select" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="lvl1" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 599.0
+margin_bottom = 527.0
+rect_scale = Vector2( 0.224114, 0.258898 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+icon = ExtResource( 3 )
+flat = true
+
+[node name="lvl2" type="Button" parent="."]
+margin_left = 224.0
+margin_top = 64.0
+margin_right = 776.0
+margin_bottom = 529.0
+rect_scale = Vector2( 0.224114, 0.258898 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+icon = ExtResource( 5 )
+flat = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 512, 300 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="pressed" from="lvl1" to="." method="_on_lvl1_pressed"]
+[connection signal="pressed" from="lvl2" to="." method="_on_lvl1_pressed"]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Enemy/GreenEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Blocks & Platforms/TileMap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/Menu.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Backgrounds/backgroundColorForest.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 28
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="Menu" type="Node2D"]
+position = Vector2( 0, -96 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileMap" parent="." instance=ExtResource( 2 )]
+cell_size = Vector2( 64, 64 )
+cell_custom_transform = Transform2D( 10, 0, 0, 10, 0, 0 )
+centered_textures = true
+tile_data = PoolIntArray( 1114112, 42, 0, 1114113, 61, 0, 1114114, 61, 0, 1114115, 61, 0, 1114116, 61, 0, 1114117, 61, 0, 1114118, 61, 0, 1114119, 61, 0, 1114120, 61, 0, 1114121, 61, 0, 1114122, 61, 0, 1114123, 61, 0, 1114124, 61, 0, 1114125, 61, 0, 1114126, 61, 0, 1114127, 61, 0, 1114128, 61, 0, 1114129, 61, 0, 1114130, 61, 0, 1114131, 61, 0, 1114132, 61, 0, 1114133, 61, 0, 1114134, 61, 0, 1114135, 61, 0, 1114136, 61, 0, 1114137, 61, 0, 1114138, 61, 0, 1114139, 61, 0, 1114140, 61, 0, 1114141, 61, 0, 1114142, 61, 0, 1114143, 40, 0, 1179648, 38, 0, 1179649, 38, 0, 1179650, 38, 0, 1179651, 38, 0, 1179652, 38, 0, 1179653, 38, 0, 1179654, 38, 0, 1179655, 38, 0, 1179656, 38, 0, 1179657, 38, 0, 1179658, 38, 0, 1179659, 38, 0, 1179660, 38, 0, 1179661, 38, 0, 1179662, 38, 0, 1179663, 38, 0, 1179664, 38, 0, 1179665, 38, 0, 1179666, 38, 0, 1179667, 38, 0, 1179668, 38, 0, 1179669, 38, 0, 1179670, 38, 0, 1179671, 38, 0, 1179672, 38, 0, 1179673, 38, 0, 1179674, 38, 0, 1179675, 38, 0, 1179676, 38, 0, 1179677, 38, 0, 1179678, 38, 0, 1179679, 38, 0, 1245184, 38, 0, 1245185, 38, 0, 1245186, 38, 0, 1245187, 38, 0, 1245188, 38, 0, 1245189, 38, 0, 1245190, 38, 0, 1245191, 38, 0, 1245192, 38, 0, 1245193, 38, 0, 1245194, 38, 0, 1245195, 38, 0, 1245196, 38, 0, 1245197, 38, 0, 1245198, 38, 0, 1245199, 38, 0, 1245200, 38, 0, 1245201, 38, 0, 1245202, 38, 0, 1245203, 38, 0, 1245204, 38, 0, 1245205, 38, 0, 1245206, 38, 0, 1245207, 38, 0, 1245208, 38, 0, 1245209, 38, 0, 1245210, 38, 0, 1245211, 38, 0, 1245212, 38, 0, 1245213, 38, 0, 1245214, 38, 0, 1245215, 38, 0, 1310720, 38, 0, 1310721, 38, 0, 1310722, 38, 0, 1310723, 38, 0, 1310724, 38, 0, 1310725, 38, 0, 1310726, 38, 0, 1310727, 38, 0, 1310728, 38, 0, 1310729, 38, 0, 1310730, 38, 0, 1310731, 38, 0, 1310732, 38, 0, 1310733, 38, 0, 1310734, 38, 0, 1310735, 38, 0, 1310736, 38, 0, 1310737, 38, 0, 1310738, 38, 0, 1310739, 38, 0, 1310740, 38, 0, 1310741, 38, 0, 1310742, 38, 0, 1310743, 38, 0, 1310744, 38, 0, 1310745, 38, 0, 1310746, 38, 0, 1310747, 38, 0, 1310748, 38, 0, 1310749, 38, 0, 1310750, 38, 0, 1310751, 38, 0, 1376256, 38, 0, 1376257, 38, 0, 1376258, 38, 0, 1376259, 38, 0, 1376260, 38, 0, 1376261, 38, 0, 1376262, 38, 0, 1376263, 38, 0, 1376264, 38, 0, 1376265, 38, 0, 1376266, 38, 0, 1376267, 38, 0, 1376268, 38, 0, 1376269, 38, 0, 1376270, 38, 0, 1376271, 38, 0, 1376272, 38, 0, 1376273, 38, 0, 1376274, 38, 0, 1376275, 38, 0, 1376276, 38, 0, 1376277, 38, 0, 1376278, 38, 0, 1376279, 38, 0, 1376280, 38, 0, 1376281, 38, 0, 1376282, 38, 0, 1376283, 38, 0, 1376284, 38, 0, 1376285, 38, 0, 1376286, 38, 0, 1376287, 38, 0, 1441792, 38, 0, 1441793, 38, 0, 1441794, 38, 0, 1441795, 38, 0, 1441796, 38, 0, 1441797, 38, 0, 1441798, 38, 0, 1441799, 38, 0, 1441800, 38, 0, 1441801, 38, 0, 1441802, 38, 0, 1441803, 38, 0, 1441804, 38, 0, 1441805, 38, 0, 1441806, 38, 0, 1441807, 38, 0, 1441808, 38, 0, 1441809, 38, 0, 1441810, 38, 0, 1441811, 38, 0, 1441812, 38, 0, 1441813, 38, 0, 1441814, 38, 0, 1441815, 38, 0, 1441816, 38, 0, 1441817, 38, 0, 1441818, 38, 0, 1441819, 38, 0, 1441820, 38, 0, 1441821, 38, 0, 1441822, 38, 0, 1441823, 38, 0, 1507328, 38, 0, 1507329, 38, 0, 1507330, 38, 0, 1507331, 38, 0, 1507332, 38, 0, 1507333, 38, 0, 1507334, 38, 0, 1507335, 38, 0, 1507336, 38, 0, 1507337, 38, 0, 1507338, 38, 0, 1507339, 38, 0, 1507340, 38, 0, 1507341, 38, 0, 1507342, 38, 0, 1507343, 38, 0, 1507344, 38, 0, 1507345, 38, 0, 1507346, 38, 0, 1507347, 38, 0, 1507348, 38, 0, 1507349, 38, 0, 1507350, 38, 0, 1507351, 38, 0, 1507352, 38, 0, 1507353, 38, 0, 1507354, 38, 0, 1507355, 38, 0, 1507356, 38, 0, 1507357, 38, 0, 1507358, 38, 0, 1507359, 38, 0 )
+
+[node name="Play" type="Button" parent="."]
+margin_left = 452.0
+margin_top = 272.0
+margin_right = 572.0
+margin_bottom = 314.0
+custom_fonts/font = SubResource( 1 )
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 462.0
+margin_top = 404.0
+margin_right = 562.0
+margin_bottom = 446.0
+custom_fonts/font = SubResource( 2 )
+text = "Quit"
+
+[node name="Settings" type="Button" parent="."]
+margin_left = 452.0
+margin_top = 334.0
+margin_right = 572.0
+margin_bottom = 374.0
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "Settings"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 30 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackgroundColorForest" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 511, 248 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enemy" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 520 )
+point1 = 10
+point2 = 1000
+
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]
