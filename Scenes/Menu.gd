@@ -8,8 +8,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	OS.window_fullscreen = true
+	if not OS.is_debug_build(): OS.window_fullscreen = true
 	OS.vsync_enabled = true
+	Global.reload_settings()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,4 +27,4 @@ func _on_Quit_pressed():
 
 
 func _on_Settings_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://Scenes/UIs/Settings.tscn")
