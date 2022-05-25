@@ -1,2 +1,0 @@
-﻿36701
-/home/david/.local/bin/Godot-3.4.4.64

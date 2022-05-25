@@ -18,3 +18,7 @@ func _ready():
 
 func _on_lvl1_pressed():
 	get_tree().change_scene("res://Scenes/Worlds/Level-01.tscn")
+
+
+func _on_lvl2_pressed():
+	get_tree().change_scene("res://Scenes/Worlds/Level-02.tscn")
