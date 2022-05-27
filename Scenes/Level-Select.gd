@@ -10,11 +10,11 @@ extends Control
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+func _process(_delta):
+	var event = Input
+	
+	if event.is_action_just_pressed("controller_back"):
+		get_tree().change_scene("res://Scenes/Menu.tscn")
 
 func _on_lvl1_pressed():
 	get_tree().change_scene("res://Scenes/Worlds/Level-01.tscn")
