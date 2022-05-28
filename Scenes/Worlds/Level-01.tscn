@@ -23,7 +23,7 @@ position = Vector2( 192, 128 )
 position = Vector2( 512, 336 )
 z_index = 5
 
-[node name="Control" parent="PlayerCam" instance=ExtResource( 8 )]
+[node name="YouWon" parent="PlayerCam" instance=ExtResource( 8 )]
 margin_left = -497.0
 margin_top = -263.0
 margin_right = -481.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Enemy/GreenEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Blocks & Platforms/TileMap.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Menu.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Backgrounds/backgroundColorForest.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Boxes/Normal_Box.tres" type="Theme" id=6]
+[ext_resource path="res://Assets/Boxes/Selected_Flatbox.tres" type="StyleBox" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -42,6 +43,9 @@ margin_right = 572.0
 margin_bottom = 314.0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
 text = "Play"
 __meta__ = {
 "_edit_lock_": true
@@ -54,6 +58,9 @@ margin_right = 562.0
 margin_bottom = 446.0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 2 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
 text = "Quit"
 __meta__ = {
 "_edit_lock_": true
@@ -66,6 +73,9 @@ margin_right = 572.0
 margin_bottom = 374.0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 3 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
 text = "Settings"
 __meta__ = {
 "_edit_lock_": true

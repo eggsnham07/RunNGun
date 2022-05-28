@@ -3,10 +3,12 @@ extends Control
 var array_object = {
 	"nodes": [
 		"LevelSelect",
+		"Retry",
 		"Quit"
 	],
 	"bools": [
-		false,	
+		false,
+		false,
 		false
 	]
 }
@@ -22,11 +24,13 @@ func _process(_delta):
 		if Input.is_action_just_pressed("down"):
 			Global.change_selection(array_object, "down", self)
 			
-		elif Input.is_action_just_pressed("down"):
-			Global.change_selection(array_object, "down", self)
+		elif Input.is_action_just_pressed("up"):
+			Global.change_selection(array_object, "up", self)
 			
 		if Input.is_action_just_pressed("jump"):
 			Global.press_button_with_controller(array_object, self)
+		
+	
 	
 
 func _on_LevelSelect_pressed():

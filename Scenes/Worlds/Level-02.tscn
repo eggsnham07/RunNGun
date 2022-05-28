@@ -64,7 +64,7 @@ margin_top = -171.0
 margin_right = -56.0
 rect_scale = Vector2( 0.7, 0.7 )
 
-[node name="Control" parent="PlayerCam" instance=ExtResource( 9 )]
+[node name="YouWon" parent="PlayerCam" instance=ExtResource( 9 )]
 margin_left = -341.0
 margin_top = -171.0
 margin_right = 99.0

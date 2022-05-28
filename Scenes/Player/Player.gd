@@ -69,3 +69,4 @@ func die():
 	movementAllowed = false
 	position = Vector2(-900, -900)
 	get_parent().get_node("PlayerCam/YouDied").show()
+	get_parent().get_node("PlayerCam/YouDied").hidden = false
