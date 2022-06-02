@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/Blocks & Platforms/TileMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Backgrounds/backgroundColorGrass.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Blocks & Platforms/Invisible-Block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/PlayerCam.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Blocks & Platforms/KillZone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Enemy/GreenEnemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/UIs/YouDied.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/UIs/YouWon.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Worlds/World-Scripts/Level-02.gd" type="Script" id=10]
+
+[node name="Level-02" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
+cell_size = Vector2( 64, 64 )
+tile_data = PoolIntArray( 589847, 45, 0, 589848, 62, 0, 589849, 62, 0, 589850, 62, 0, 589851, 62, 0, 589852, 62, 0, 589853, 62, 0, 589854, 62, 0, 589855, 62, 0, 589856, 62, 0, 589857, 62, 0, 589858, 62, 0, 589859, 62, 0, 589860, 62, 0, 589861, 62, 0, 589862, 47, 0, 917545, 45, 0, 917546, 62, 0, 917547, 62, 0, 917548, 62, 0, 917549, 62, 0, 917550, 62, 0, 917551, 62, 0, 917552, 62, 0, 917553, 62, 0, 917554, 62, 0, 917555, 62, 0, 917556, 62, 0, 917557, 62, 0, 917558, 62, 0, 917559, 62, 0, 917560, 62, 0, 917561, 62, 0, 917562, 47, 0, 1179648, 42, 0, 1179649, 61, 0, 1179650, 61, 0, 1179651, 61, 0, 1179652, 61, 0, 1179653, 61, 0, 1179654, 61, 0, 1179655, 61, 0, 1179656, 61, 0, 1179657, 61, 0, 1179658, 61, 0, 1179659, 61, 0, 1179660, 61, 0, 1179661, 61, 0, 1179662, 61, 0, 1179663, 61, 0, 1179664, 61, 0, 1179665, 61, 0, 1179666, 61, 0, 1179667, 61, 0, 1179668, 61, 0, 1179669, 61, 0, 1179670, 61, 0, 1179671, 61, 0, 1179672, 61, 0, 1179673, 61, 0, 1179674, 61, 0, 1179675, 61, 0, 1179676, 61, 0, 1179677, 61, 0, 1179678, 61, 0, 1179679, 61, 0, 1179680, 61, 0, 1179681, 61, 0, 1179682, 61, 0, 1179683, 61, 0, 1179684, 61, 0, 1179685, 61, 0, 1179686, 61, 0, 1179687, 40, 0 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 512, 400 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 2560, 400 )
+texture = ExtResource( 2 )
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -512, 400 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1536, 400 )
+texture = ExtResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 496, 528 )
+
+[node name="Invisible-Blocks" parent="." instance=ExtResource( 4 )]
+position = Vector2( 640, 592 )
+scale = Vector2( 63.4, 1.5 )
+
+[node name="Invisible-Block1" parent="Invisible-Blocks" instance=ExtResource( 4 )]
+position = Vector2( 15.142, -85.3334 )
+scale = Vector2( 0.454823, -0.830646 )
+
+[node name="Invisible-Block2" parent="Invisible-Blocks" instance=ExtResource( 4 )]
+position = Vector2( 5.55205, -192 )
+scale = Vector2( 0.403088, -0.830646 )
+
+[node name="PlayerCam" parent="." instance=ExtResource( 5 )]
+position = Vector2( 512, 352 )
+scale = Vector2( 1.5, 1.5 )
+z_index = 5
+
+[node name="YouDied" parent="PlayerCam" instance=ExtResource( 8 )]
+margin_left = -341.0
+margin_top = -171.0
+margin_right = -56.0
+rect_scale = Vector2( 0.7, 0.7 )
+
+[node name="YouWon" parent="PlayerCam" instance=ExtResource( 9 )]
+margin_left = -341.0
+margin_top = -171.0
+margin_right = 99.0
+margin_bottom = 278.0
+rect_scale = Vector2( 0.7, 0.7 )
+
+[node name="KillZones" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1024, 912 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="KillZone" parent="KillZones" instance=ExtResource( 6 )]
+position = Vector2( 1024, 0 )
+
+[node name="KillZone2" parent="KillZones" instance=ExtResource( 6 )]
+position = Vector2( 2048, 0 )
+
+[node name="Enemy" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1248, 560 )
+point1 = 32
+point2 = 1248
+
+[node name="Enemy2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 64, 560 )
+point1 = 32
+point2 = 1248
+
+[node name="Enemy3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1600, 432 )
+point1 = 1344
+point2 = 1856
+
+[node name="Enemy4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 976, 272 )
+point1 = 752
+point2 = 1216
+
+[connection signal="died" from="Enemy" to="." method="_on_Enemy_died"]
+[connection signal="died" from="Enemy2" to="." method="_on_Enemy2_died"]
+[connection signal="died" from="Enemy3" to="." method="_on_Enemy3_died"]
+[connection signal="died" from="Enemy4" to="." method="_on_Enemy4_died"]

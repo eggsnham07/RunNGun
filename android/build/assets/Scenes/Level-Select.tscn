@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/Worlds/World-Scripts/Level-Select.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Thumbnail-1.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Blocks & Platforms/TileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Thumbnail-2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Boxes/Box_Selected.tres" type="Theme" id=6]
+[ext_resource path="res://Assets/Boxes/Box_Unselected.tres" type="Theme" id=7]
+[ext_resource path="res://Scenes/Enemy/RedEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Enemy/GreenEnemy.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="Level-Select" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="lvl1" type="Button" parent="."]
+margin_left = 56.0
+margin_top = 64.0
+margin_right = 599.0
+margin_bottom = 541.0
+rect_scale = Vector2( 0.224114, 0.258898 )
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 1 )
+icon = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="lvl2" type="Button" parent="."]
+margin_left = 208.0
+margin_top = 64.0
+margin_right = 768.0
+margin_bottom = 543.0
+rect_scale = Vector2( 0.224114, 0.258898 )
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 1 )
+icon = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileMap" parent="." instance=ExtResource( 4 )]
+cell_size = Vector2( 64, 64 )
+tile_data = PoolIntArray( 458753, 1, 0, 458755, 59, 0, 458756, 59, 0, 458757, 2, 0, 458758, 45, 0, 458759, 62, 0, 458760, 62, 0, 458761, 62, 0, 458762, 47, 0 )
+
+[node name="Enemy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 88, 208 )
+scale = Vector2( 0.7, 0.7 )
+point1 = 48
+point2 = 176
+speed = 100
+
+[node name="Enemy2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 320, 208 )
+scale = Vector2( 0.7, 0.7 )
+point1 = 208
+point2 = 336
+walkingBack = true
+speed = 100
+
+[connection signal="pressed" from="lvl1" to="." method="_on_lvl1_pressed"]
+[connection signal="pressed" from="lvl2" to="." method="_on_lvl2_pressed"]

@@ -19,10 +19,10 @@ onready var array_object = {
 }
 
 func _ready():
-	if not OS.is_debug_build(): OS.window_fullscreen = true
-	OS.vsync_enabled = true
 	Global.reload_settings()
 	Global.reload_menu_selection(array_object, self)
+	
+	if OS.is_debug_build(): OS.window_fullscreen = false
 
 func _process(_delta):
 	# Start, Select, and LT + RT actions

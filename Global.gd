@@ -7,6 +7,7 @@ var node_size:int = 0
 func _ready():
 	reload_settings()
 	pause_mode = Node.PAUSE_MODE_PROCESS
+	print(OS.get_name())
 	
 func game_start():
 	get_tree().change_scene("res://Scenes/Level-Select.tscn")
@@ -183,3 +184,5 @@ func _process(_delta):
 	elif event.is_action_pressed("controller_rt") && event.is_action_pressed("controller_lt"):
 		quit_game()
 		if debug_mode: print("_on_Quit_pressed triggered")
+		
+

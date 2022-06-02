@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Worlds/World-Scripts/PlayerCam.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Worlds/World-Scripts/Area2D.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Worlds/World-Scripts/Area2D2.gd" type="Script" id=3]
-
+[ext_resource path="res://Assets/Buttons/Jump.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Buttons/Left.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Buttons/Shoot.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 5, 293 )
@@ -26,6 +28,36 @@ script = ExtResource( 3 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2( -512, -12 )
 shape = SubResource( 9 )
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2( -488, 148 )
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 6 )
+passby_press = true
+action = "left"
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2( -272, 244 )
+rotation = 3.14159
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 6 )
+passby_press = true
+action = "right"
+
+[node name="Jump" type="TouchScreenButton" parent="."]
+position = Vector2( 400, 148 )
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 5 )
+passby_press = true
+action = "jump"
+
+[node name="Shoot" type="TouchScreenButton" parent="."]
+position = Vector2( 400, 36 )
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 7 )
+passby_press = true
+action = "shoot"
+visibility_mode = 1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_entered" from="Area2D2" to="." method="_on_Area2D2_area_entered"]

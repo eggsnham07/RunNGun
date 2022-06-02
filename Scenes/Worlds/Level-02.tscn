@@ -55,21 +55,19 @@ scale = Vector2( 0.403088, -0.830646 )
 
 [node name="PlayerCam" parent="." instance=ExtResource( 5 )]
 position = Vector2( 512, 352 )
-scale = Vector2( 1.5, 1.5 )
 z_index = 5
 
 [node name="YouDied" parent="PlayerCam" instance=ExtResource( 8 )]
-margin_left = -341.0
-margin_top = -171.0
-margin_right = -56.0
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = -512.0
+margin_top = -264.0
+margin_right = -336.0
+margin_bottom = -192.0
 
 [node name="YouWon" parent="PlayerCam" instance=ExtResource( 9 )]
-margin_left = -341.0
-margin_top = -171.0
-margin_right = 99.0
-margin_bottom = 278.0
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = -512.0
+margin_top = -256.0
+margin_right = -72.0
+margin_bottom = 193.0
 
 [node name="KillZones" parent="." instance=ExtResource( 6 )]
 position = Vector2( -1024, 912 )
