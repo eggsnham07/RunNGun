@@ -19,10 +19,16 @@ onready var array_object = {
 }
 
 func _ready():
+	if OS.is_debug_build(): 
+		var stats = preload("res://Scenes/UIs/DevStats.tscn")
+		OS.window_fullscreen = false
+		get_parent().call_deferred(
+			"add_child",
+			stats.instance()
+		)
+		
 	Global.reload_settings()
-	Global.reload_menu_selection(array_object, self)
-	
-	if OS.is_debug_build(): OS.window_fullscreen = false
+	Global.reload_menu_selection(array_object, self)	
 
 func _process(_delta):
 	# Start, Select, and LT + RT actions

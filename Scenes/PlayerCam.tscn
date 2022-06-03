@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/Worlds/World-Scripts/PlayerCam.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Worlds/World-Scripts/Area2D.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Worlds/World-Scripts/Area2D2.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/PlayerCam.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Area2D.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Area2D2.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Buttons/Jump.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Buttons/Left.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Buttons/Shoot.png" type="Texture" id=7]
