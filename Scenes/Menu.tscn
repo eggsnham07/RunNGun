@@ -81,6 +81,18 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Load Mod" type="Button" parent="."]
+margin_left = 442.5
+margin_top = 504.0
+margin_right = 579.5
+margin_bottom = 549.0
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+text = "Load Mod"
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -104,3 +116,4 @@ point2 = 1000
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Load Mod" to="." method="_on_Load_Mod_pressed"]

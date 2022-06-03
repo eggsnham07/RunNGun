@@ -1,0 +1,97 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/UIs/SelectMod.gd" type="Script" id=1]
+
+[node name="SelectMod" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 16.0
+script = ExtResource( 1 )
+
+[node name="UserNotFound" type="PopupDialog" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 248.0
+margin_bottom = 56.0
+
+[node name="Label" type="Label" parent="UserNotFound"]
+margin_left = 7.0
+margin_top = 4.0
+margin_right = 240.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "ERROR_5:"
+
+[node name="Label2" type="Label" parent="UserNotFound"]
+margin_left = 71.0
+margin_top = 5.0
+margin_right = 233.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "USERNAME_NOT_FOUND"
+
+[node name="InvalidMod" type="PopupDialog" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 248.0
+margin_bottom = 56.0
+
+[node name="Label" type="Label" parent="InvalidMod"]
+margin_left = 7.0
+margin_top = 4.0
+margin_right = 240.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "ERROR_1:"
+
+[node name="Label2" type="Label" parent="InvalidMod"]
+margin_left = 71.0
+margin_top = 5.0
+margin_right = 233.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "SELECTED_MOD_INVALID"
+
+[node name="SysNotSupported" type="PopupDialog" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 304.0
+margin_bottom = 56.0
+
+[node name="Label" type="Label" parent="SysNotSupported"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 202.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "ERROR_3:"
+align = 3
+
+[node name="Label2" type="Label" parent="SysNotSupported"]
+margin_left = 73.0
+margin_top = 5.0
+margin_right = 290.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "MOD_LOADING_NOT_SUPPORTED"
+align = 3
+
+[node name="SelectMod" type="FileDialog" parent="."]
+visible = true
+anchor_top = -0.032
+anchor_bottom = -0.032
+margin_left = 216.0
+margin_top = 119.872
+margin_right = 760.0
+margin_bottom = 375.872
+popup_exclusive = true
+window_title = "Open a File"
+resizable = true
+mode_overrides_title = false
+mode = 0
+access = 2
+current_dir = "/eggsn/Documents/GodotProjects/RunNGun"
+current_path = "/eggsn/Documents/GodotProjects/RunNGun/"
+
+[connection signal="confirmed" from="SelectMod" to="." method="_on_SelectMod_confirmed"]
+[connection signal="file_selected" from="SelectMod" to="." method="_on_SelectMod_file_selected"]

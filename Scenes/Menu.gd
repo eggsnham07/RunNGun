@@ -97,3 +97,8 @@ func _on_Quit_pressed():
 
 func _on_Settings_pressed():
 	Global.open_settings()
+
+
+func _on_Load_Mod_pressed():
+	var open_mod = preload("res://Scenes/UIs/SelectMod.tscn")
+	self.add_child(open_mod.instance())

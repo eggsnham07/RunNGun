@@ -5,9 +5,12 @@ var bool_size:int = 0
 var node_size:int = 0
 
 func _ready():
-	reload_settings()
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	print(OS.get_name())
+	
+func fileDoesExist(filename:String):
+	var file = File.new()
+	return file.file_exists(filename)
 	
 func game_start():
 	get_tree().change_scene("res://Scenes/Level-Select.tscn")
@@ -123,37 +126,35 @@ func reload_menu_selection_down(array_object):
 func writeToFile(filename:String, content:String):
 	var fileToWrite = File.new()
 	print(content)
-	fileToWrite.open("user://" + filename, File.WRITE)
+	fileToWrite.open(filename, File.WRITE)
 	fileToWrite.store_string(content)
 	fileToWrite.close()
 	
 func loadFromFile(filename:String):
 	var fileToOpen = File.new()
-	if not fileToOpen.file_exists("user://" + filename):
-		if filename == "framerate.cfg": fileToOpen.store_string("60")
-		else: fileToOpen.store_string("false")
-	fileToOpen.open("user://" + filename, File.READ)
+	if not fileDoesExist(filename):
+		play_error(self.get_parent(), 0)
+		if filename.ends_with(".cfg"):
+			self.clear_settings()
+		return "Failed"
+	fileToOpen.open(filename, File.READ)
 	var returnContent = fileToOpen.get_as_text()
 	fileToOpen.close()
 	return returnContent
 
-func fileDoesExist(filename:String):
-	var file = File.new()
-	return file.file_exists("user://" + filename)
-
 func reload_settings():
 	var fullscreen:bool
 	var vsync:bool
-	var FPS:int = int(loadFromFile("framerate.cfg"))
+	var FPS:int = int(loadFromFile("user://framerate.cfg"))
 	
-	if loadFromFile("fullscreen.cfg") == "False":
+	if loadFromFile("user://fullscreen.cfg") == "False":
 		fullscreen = false
-	if loadFromFile("fullscreen.cfg") == "True":
+	if loadFromFile("user://fullscreen.cfg") == "True":
 		fullscreen = true
 		
-	if loadFromFile("vsync.cfg") == "False":
+	if loadFromFile("user://vsync.cfg") == "False":
 		vsync = false
-	if loadFromFile("vsync.cfg") == "True":
+	if loadFromFile("user://vsync.cfg") == "True":
 		vsync = true
 		
 	Engine.target_fps = FPS
@@ -166,9 +167,9 @@ func reload_settings():
 		print("FPS: " + String(FPS))
 
 func clear_settings():
-	writeToFile("fullscreen.cfg", "false")
-	writeToFile("vsync.cfg", "false")
-	writeToFile("framerate.cfg", "60")
+	writeToFile("user://fullscreen.cfg", "false")
+	writeToFile("user://vsync.cfg", "false")
+	writeToFile("user://framerate.cfg", "60")
 	
 func _process(_delta):
 	var event = Input
@@ -185,4 +186,16 @@ func _process(_delta):
 		quit_game()
 		if debug_mode: print("_on_Quit_pressed triggered")
 		
-
+func play_error(parent, error_type):
+	var err_sound = preload("res://Assets/SFX/Error.tscn")
+	var err_popup = preload("res://Scenes/UIs/PopupError.tscn")
+	parent.call_deferred(
+		"add_child",
+		err_sound.instance()
+	)
+	
+	if error_type == 0:
+		parent.call_deferred(
+			"add_child",
+			err_popup.instance()
+		)

@@ -1,0 +1,5 @@
+[core]
+	fsmonitor = true
+[user]
+	email = eggsnham07@gmail.com
+	name = eggsnham07
