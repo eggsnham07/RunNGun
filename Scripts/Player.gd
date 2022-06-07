@@ -30,7 +30,9 @@ func _physics_process(delta):
 		velocity.y -= jumpForce
 		
 	if movementAllowed and Input.is_action_just_pressed("shoot"):
+		var sfx = preload("res://Assets/SFX/Pew.tscn")
 		get_parent().add_child(proj)
+		get_parent().add_child(sfx.instance())
 		proj.global_position.x = get_parent().get_node("Player/Body/Gun").global_position.x + modifier
 		proj.global_position.y = get_parent().get_node("Player/Body/Gun").global_position.y
 		if Body.flip_h == false: proj.reverse = true

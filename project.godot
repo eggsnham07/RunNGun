@@ -12,12 +12,15 @@ config_version=4
 
 config/name="Run 'N Gun"
 run/main_scene="res://Scenes/Menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="RunNGun"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://Global.gd"
+BgMusic="*res://Assets/BG_Music.tscn"
 
 [display]
 

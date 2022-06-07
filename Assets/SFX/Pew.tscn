@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/SFX/error.mp3" type="AudioStream" id=1]
+[ext_resource path="res://Assets/SFX/RunNGun_pew_SFX.mp3" type="AudioStream" id=1]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends AudioStreamPlayer
@@ -17,8 +17,7 @@ func _ready():
 		self.playing = false
 "
 
-[node name="Error" type="AudioStreamPlayer"]
+[node name="Pew" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
-volume_db = 15.0
 mix_target = 2
 script = SubResource( 1 )
