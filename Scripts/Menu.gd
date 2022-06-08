@@ -27,6 +27,11 @@ func _ready():
 			stats.instance()
 		)
 		
+	var execPath = OS.get_executable_path()
+	if debug_mode: print(execPath)
+	if "index" in execPath or "tmp_js_export" in execPath:
+		$Quit.disabled = true
+		
 	Global.reload_settings()
 	Global.reload_menu_selection(array_object, self)	
 

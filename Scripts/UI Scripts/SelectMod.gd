@@ -47,7 +47,7 @@ func self_play_error(err_code:int):
 	if err_code == 3:
 		$SysNotSupported.popup()
 	if err_code == 5:
-		$UserNotFound.popup()
+		$NoModLoading.popup()
 
 func _on_SelectMod_file_selected(path):
 	var modContents = Global.loadFromFile(path)
