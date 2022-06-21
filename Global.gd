@@ -3,10 +3,34 @@ extends Node
 var debug_mode:bool = OS.is_debug_build()
 var bool_size:int = 0
 var node_size:int = 0
+var combo_mode:bool = false
+var combo_count:int = 0
+
+var Player = null
+
+var input_array = {
+	"super": [
+		"down",
+		"right",
+		"jump"
+	],
+	"devmode": [
+		"down",
+		"down",
+		"up",
+		"up",
+		"left",
+		"right",
+		"left",
+		"right",
+		"jump"
+	]
+}
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	print(OS.get_name())
+	if debug_mode: BgMusic.stream_paused = true
 	
 func fileDoesExist(filename:String):
 	var file = File.new()
@@ -22,11 +46,17 @@ func open_settings():
 	get_tree().change_scene("res://Scenes/UIs/Settings.tscn")
 	
 func press_button_with_controller(array_object, parent):
+	if combo_mode:
+		pass
+		
 	for j in array_object.nodes.size():
 		if array_object["bools"][j] == true:
 			parent.get_node(array_object["nodes"][j]).emit_signal("pressed")
 	
 func reload_menu_selection(array_object, parent):
+	if combo_mode:
+		pass
+	
 	bool_size = array_object["bools"].size()-1
 	node_size = array_object["nodes"].size()-1
 	for i in array_object.nodes.size():
@@ -37,6 +67,9 @@ func reload_menu_selection(array_object, parent):
 			print(i, "Loading node:", array_object["nodes"][i])
 			
 func change_selection(array_object, dir:String, parent):
+	if combo_mode:
+		pass 
+	
 	if reload_for_controller(array_object, parent) == true:
 		reload_for_controller(array_object, parent)
 	elif (dir == "up" or dir == "left") and reload_for_controller(array_object, parent) == false:
@@ -199,3 +232,48 @@ func play_error(parent, error_type):
 			"add_child",
 			err_popup.instance()
 		)
+
+func _input(event):
+	if event is InputEventKey and event.is_pressed():
+		if event.is_action("super_activate") and not event.is_echo():
+			combo_mode = true
+			print("Activating combo")
+			if debug_mode:
+				print(combo_mode)
+				print(input_array["super"][combo_count])
+				
+			return
+		if combo_mode:
+			if Player:
+				if debug_mode: print("Not tab")
+				if combo_mode == true:
+					if event.is_action(input_array.super[input_array.super.size()-1]) and not event.is_echo():
+						print("Super executed!")
+						if Player: Player.killable = false
+						combo_mode = false
+						combo_count = 0
+					if event.is_action(input_array.super[combo_count]) and not event.is_echo():
+						if debug_mode: print("On our way to greatness")
+						combo_count += 1
+					else:
+						if not event.is_echo():
+							if debug_mode: print("Wrong key!\n", event.as_text())
+							combo_mode = false
+							combo_count = 0
+			if get_tree().current_scene.name == "Menu":
+				if combo_mode:
+					if combo_count == input_array.devmode.size()-1 and not event.is_echo():
+						print("Dev mode enabled")
+						var stats = preload("res://Scenes/UIs/DevStats.tscn")
+						if debug_mode == false: 
+							debug_mode = true
+							get_parent().add_child(stats.instance())
+						combo_mode = false
+						combo_count = 0
+					if event.is_action(input_array.devmode[combo_count]) and not event.is_echo():
+						combo_count += 1
+					else:
+						if not event.is_echo():
+							if debug_mode: print("Wrong key!\n", event.as_text())
+							combo_mode = false
+							combo_count = 0

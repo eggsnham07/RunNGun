@@ -6,11 +6,8 @@ export var enemy:bool = false
 
 func _physics_process(delta):
 	Sprite.rotate(5 * delta)
-	if reverse: position.x += 300 * delta
-	else: position.x -= 300 * delta
-
-
-
+	if reverse: position.x += 700 * delta
+	else: position.x -= 700 * delta
 
 func _on_Area2D_area_entered(area):
 	if area.enemy:

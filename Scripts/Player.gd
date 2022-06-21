@@ -3,17 +3,19 @@ extends KinematicBody2D
 export var speed:int = 200
 export var jumpForce:int = 600
 export var playerGravity:int = 800
+export var killable:bool = true
+export var movementAllowed:bool = true
 
 var velocity:Vector2 = Vector2()
-
 var playerLevel:int = 0
 var modifier:int = 2
-
-export var movementAllowed:bool = true
 
 onready var Body = $Body
 onready var Gun = $Body/Gun
 onready var Projectile = preload("res://Scenes/Player/Projectile.tscn")
+
+func _ready():
+	Global.Player = self
 
 func _physics_process(delta):
 	var proj = Projectile.instance()
@@ -28,6 +30,11 @@ func _physics_process(delta):
 		velocity.x -= speed
 	if movementAllowed and Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y -= jumpForce
+		
+	if movementAllowed and Input.is_action_pressed("down"):
+		playerGravity = 2800
+	elif movementAllowed and not Input.is_action_pressed("down"):
+		playerGravity = 800
 		
 	if movementAllowed and Input.is_action_just_pressed("shoot"):
 		var sfx = preload("res://Assets/SFX/Pew.tscn")
@@ -68,7 +75,8 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
 func die():
-	movementAllowed = false
-	position = Vector2(-900, -900)
-	get_parent().get_node("PlayerCam/YouDied").show()
-	get_parent().get_node("PlayerCam/YouDied").hidden = false
+	if killable:
+		movementAllowed = false
+		position = Vector2(-900, -900)
+		get_parent().get_node("PlayerCam/YouDied").show()
+		get_parent().get_node("PlayerCam/YouDied").hidden = false

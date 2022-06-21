@@ -21,7 +21,7 @@ func _process(_delta):
 	if event.is_action_just_pressed("controller_back"):
 		get_tree().change_scene("res://Scenes/Menu.tscn")
 		
-	if event.is_action_just_pressed("left"):
+	if event.is_action_just_pressed("controller_left"):
 		var count = 0
 		for j in array_object["bools"].size():
 			if array_object["bools"][j] == true:
@@ -42,7 +42,7 @@ func _process(_delta):
 		if debug_mode:
 			print("Down action triggered")
 			
-	if event.is_action_just_pressed("right"):
+	if event.is_action_just_pressed("controller_right"):
 		var count = 0
 		for j in array_object["bools"].size():
 			if array_object["bools"][j] == true:
@@ -63,7 +63,7 @@ func _process(_delta):
 		if debug_mode:
 			print("Up action triggered")
 			
-	if event.is_action_just_pressed("jump"):
+	if event.is_action_just_pressed("controller_a"):
 		for i in array_object.nodes.size():
 			if array_object.bools[i]: get_node(array_object.nodes[i]).emit_signal("pressed")
 

@@ -19,7 +19,7 @@ onready var array_object = {
 }
 
 func _ready():
-	if OS.is_debug_build(): 
+	if Global.debug_mode: 
 		var stats = preload("res://Scenes/UIs/DevStats.tscn")
 		OS.window_fullscreen = false
 		get_parent().call_deferred(
@@ -46,7 +46,8 @@ func _process(_delta):
 		_on_Settings_pressed()
 		if debug_mode: print("_on_Settings_pressed triggered")
 		
-	if event.is_action_just_pressed("down"):
+	# Menu Selection
+	if event.is_action_just_pressed("controller_down"):
 		var count = 0
 		for j in array_object["bools"].size():
 			if array_object["bools"][j] == true:
@@ -70,7 +71,7 @@ func _process(_delta):
 		if debug_mode:
 			print("Down action triggered")
 			
-	if event.is_action_just_pressed("up"):
+	if event.is_action_just_pressed("controller_up"):
 		var count = 0
 		for j in array_object["bools"].size():
 			if array_object["bools"][j] == true:
@@ -94,7 +95,7 @@ func _process(_delta):
 		if debug_mode:
 			print("Up action triggered")
 			
-	if event.is_action_just_pressed("jump"):
+	if event.is_action_just_pressed("controller_a"):
 		for i in array_object.nodes.size():
 			if array_object.bools[i]: get_node(array_object.nodes[i]).emit_signal("pressed")
 
