@@ -9,30 +9,6 @@
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 21.3333, 24 )
 
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 24, 24 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 24, 24 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 4 )
-region = Rect2( 24, 0, 24, 24 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 24, 24 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 4 )
-region = Rect2( 72, 0, 24, 24 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 24, 24 )
-
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 24, 24 )
@@ -49,8 +25,8 @@ region = Rect2( 48, 0, 24, 24 )
 atlas = ExtResource( 1 )
 region = Rect2( 72, 0, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=20]
@@ -69,16 +45,45 @@ region = Rect2( 48, 0, 24, 24 )
 atlas = ExtResource( 5 )
 region = Rect2( 72, 0, 24, 24 )
 
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 4 )
+region = Rect2( 24, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 4 )
+region = Rect2( 72, 0, 24, 24 )
+
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "KnightRun",
+"speed": 12.0
+}, {
 "frames": [ SubResource( 13 ) ],
 "loop": true,
 "name": "KnightIdle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
-"name": "NerdRun",
+"name": "MonkRun",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 18 ) ],
@@ -86,19 +91,14 @@ animations = [ {
 "name": "NerdIdle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
-"loop": true,
-"name": "KnightRun",
-"speed": 12.0
-}, {
 "frames": [ SubResource( 19 ) ],
 "loop": true,
 "name": "MonkIdle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
-"name": "MonkRun",
+"name": "NerdRun",
 "speed": 12.0
 } ]
 
@@ -141,7 +141,7 @@ position = Vector2( 0, -2 )
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 7 )
 animation = "NerdRun"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Gun" type="AnimatedSprite" parent="Body"]

@@ -5,8 +5,12 @@ var bool_size:int = 0
 var node_size:int = 0
 var combo_mode:bool = false
 var combo_count:int = 0
-
 var Player = null
+var GAME_VER = "1.1.5"
+
+var data = {
+	"speed": 200
+}
 
 var input_array = {
 	"super": [
@@ -31,6 +35,8 @@ func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	print(OS.get_name())
 	if debug_mode: BgMusic.stream_paused = true
+	
+	ModLoader.load_mods(self.data)
 	
 func fileDoesExist(filename:String):
 	var file = File.new()
@@ -210,6 +216,9 @@ func clear_settings():
 func _process(_delta):
 	var event = Input
 	
+	if self.Player != null && self.Player.speed != self.data.speed:
+			self.Player.speed = self.data.speed
+	
 	if event.is_action_just_pressed("controller_select") and not get_tree().current_scene.name == "Menu":
 		if get_tree().paused == false: get_tree().paused = true
 		elif get_tree().paused == true: get_tree().paused = false
@@ -294,10 +303,3 @@ func list_files_in_directory(path):
 			files.append(file)
 	dir.list_dir_end()
 	return files
-	
-func add_game_stats():
-	var stats = preload("res://Scenes/UIs/DevStats.tscn")
-	get_parent().call_deferred("add_child", stats.instance())
-
-func enable_devmode():
-	debug_mode = true

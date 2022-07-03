@@ -68,7 +68,6 @@ func _on_SelectMod_file_selected(path):
 	else:
 		Global.writeToFile("user://loaded-mods.dat", Global.loadFromFile("loaded-mods.dat") + ":" + filename)
 		
-	ModLoader.load_mods()
 
 func _on_SelectMod_confirmed():
 	print($SelectMod.current_path)
