@@ -190,6 +190,9 @@ func reload_settings():
 	if loadFromFile("user://vsync.cfg") == "True":
 		vsync = true
 		
+	if not fileDoesExist("skin.dat"):
+		writeToFile("skin.dat", "skin=knight")
+		
 	Engine.target_fps = FPS
 	OS.window_fullscreen = fullscreen
 	OS.vsync_enabled = vsync

@@ -5,10 +5,13 @@ export var jumpForce:int = 600
 export var playerGravity:int = 800
 export var killable:bool = true
 export var movementAllowed:bool = true
+export var skin:String = "knight"
 
 var velocity:Vector2 = Vector2()
 var playerLevel:int = 0
 var modifier:int = 2
+var RunAnim:String = "KnightRun"
+var IdleAnim:String = "KnightIdle"
 
 onready var Body = $Body
 onready var Gun = $Body/Gun
@@ -16,8 +19,16 @@ onready var Projectile = preload("res://Scenes/Player/Projectile.tscn")
 
 func _ready():
 	Global.Player = self
+	
+	if Global.fileDoesExist("skin.dat"):
+		skin = String(Global.loadFromFile("skin.dat")).split("=")[1]
+	
+	RunAnim = skin.capitalize() + "Run"
+	IdleAnim = skin.capitalize() + "Idle"
+	
 
 func _physics_process(delta):
+	
 	var proj = Projectile.instance()
 	if Body.flip_h: modifier = -50
 	else: modifier = 50
@@ -63,13 +74,13 @@ func _physics_process(delta):
 		Gun.position.y = 2.8
 	
 	if velocity.x == 0:
-		Body.play("default")
+		Body.play(IdleAnim)
 		Gun.play("default")
 		if Body.flip_h == false: Gun.position.x = 4.4
 		else: Gun.position.x = -4.4
 		Gun.position.y = 6.8
 	else:
-		Body.play("Running")
+		Body.play(RunAnim)
 		Gun.play("Running")
 		
 	velocity = move_and_slide(velocity, Vector2.UP)

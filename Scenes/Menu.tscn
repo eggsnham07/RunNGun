@@ -63,18 +63,27 @@ __meta__ = {
 
 [node name="Quit" type="Button" parent="."]
 margin_left = 462.0
-margin_top = 404.0
+margin_top = 464.0
 margin_right = 562.0
-margin_bottom = 446.0
+margin_bottom = 507.0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 2 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 7 )
 custom_styles/focus = ExtResource( 7 )
 text = "Quit"
-__meta__ = {
-"_edit_lock_": true
-}
+
+[node name="Select Player" type="Button" parent="."]
+margin_left = 434.0
+margin_top = 403.0
+margin_right = 589.0
+margin_bottom = 446.0
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+text = "Player Select"
 
 [node name="Settings" type="Button" parent="."]
 margin_left = 452.0
@@ -149,5 +158,6 @@ valign = 1
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Select Player" to="." method="_on_Select_Player_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Load Mod" to="." method="_on_Load_Mod_pressed"]

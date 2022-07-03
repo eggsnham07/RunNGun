@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Images/Thumbnails/nerd-player-thumb.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Backgrounds/backgroundForest.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Images/Thumbnails/monk-player-thumb.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Images/Thumbnails/knight-player-thumb.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/PlayerSelect.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="PlayerSelectUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackgroundForest" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 512, 200 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Knight" type="Button" parent="."]
+margin_left = 384.0
+margin_top = 208.0
+margin_right = 420.0
+margin_bottom = 248.0
+rect_scale = Vector2( 2, 2 )
+hint_tooltip = "Select Knight"
+icon = ExtResource( 5 )
+flat = true
+
+[node name="Label" type="Label" parent="Knight"]
+margin_left = 1.0
+margin_top = 32.0
+margin_right = 69.0
+margin_bottom = 61.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Knight"
+align = 1
+valign = 1
+
+[node name="Nerd" type="Button" parent="."]
+margin_left = 464.0
+margin_top = 208.0
+margin_right = 500.0
+margin_bottom = 248.0
+rect_scale = Vector2( 2, 2 )
+hint_tooltip = "Select Nerd"
+icon = ExtResource( 2 )
+flat = true
+
+[node name="Label" type="Label" parent="Nerd"]
+margin_left = 1.0
+margin_top = 32.0
+margin_right = 69.0
+margin_bottom = 61.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Nerd"
+align = 1
+valign = 1
+
+[node name="Monk" type="Button" parent="."]
+margin_left = 544.0
+margin_top = 208.0
+margin_right = 580.0
+margin_bottom = 248.0
+rect_scale = Vector2( 2, 2 )
+hint_tooltip = "Select Monk"
+icon = ExtResource( 4 )
+flat = true
+
+[node name="Label" type="Label" parent="Monk"]
+margin_left = 1.0
+margin_top = 32.0
+margin_right = 69.0
+margin_bottom = 61.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Monk"
+align = 1
+valign = 1
+
+[node name="Back" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 2 )
+text = "Back"
+
+[connection signal="pressed" from="Knight" to="." method="_on_Knight_pressed"]
+[connection signal="pressed" from="Nerd" to="." method="_on_Nerd_pressed"]
+[connection signal="pressed" from="Monk" to="." method="_on_Monk_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

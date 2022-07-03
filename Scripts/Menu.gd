@@ -9,9 +9,11 @@ onready var array_object = {
 	"nodes": [
 		"Play",
 		"Settings",
+		"Select Player",
 		"Quit"
 	],
 	"bools": [
+		false,
 		false,
 		false,
 		false
@@ -19,6 +21,7 @@ onready var array_object = {
 }
 
 func _ready():
+	Global.Player = null
 	if Global.debug_mode: 
 		var stats = preload("res://Scenes/UIs/DevStats.tscn")
 		OS.window_fullscreen = false
@@ -114,3 +117,7 @@ func _on_Settings_pressed():
 func _on_Load_Mod_pressed():
 	var open_mod = preload("res://Scenes/UIs/SelectMod.tscn")
 	self.add_child(open_mod.instance())
+
+
+func _on_Select_Player_pressed():
+	get_tree().change_scene("res://Scenes/PlayerSelect.tscn")

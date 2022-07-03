@@ -13,6 +13,7 @@ var array_object = {
 var debug_mode = Global.debug_mode
 
 func _ready():
+	Global.Player = null
 	Global.reload_menu_selection(array_object, self)
 
 func _process(_delta):
