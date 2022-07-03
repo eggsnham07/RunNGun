@@ -90,8 +90,8 @@ resizable = true
 mode_overrides_title = false
 mode = 0
 access = 2
-current_dir = "/home/david/Documents/GodotProjects/RunNGun"
-current_path = "/home/david/Documents/GodotProjects/RunNGun/"
+current_dir = "/home/david/Documents/Godot/RunNGun"
+current_path = "/home/david/Documents/Godot/RunNGun/"
 
 [connection signal="confirmed" from="SelectMod" to="." method="_on_SelectMod_confirmed"]
 [connection signal="file_selected" from="SelectMod" to="." method="_on_SelectMod_file_selected"]

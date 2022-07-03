@@ -68,6 +68,9 @@ func _process(_delta):
 			array_object["bools"][2] = true
 		elif array_object["bools"][2] == true:
 			array_object["bools"][2] = false
+			array_object["bools"][3] = true
+		elif array_object["bools"][3] == true:
+			array_object["bools"][3] = false
 			array_object["bools"][0] = true
 		Global.reload_menu_selection(array_object, self)
 		
@@ -86,6 +89,9 @@ func _process(_delta):
 			
 		elif array_object["bools"][0] == true:
 			array_object["bools"][0] = false
+			array_object["bools"][3] = true
+		elif array_object["bools"][3] == true:
+			array_object["bools"][3] = false
 			array_object["bools"][2] = true
 		elif array_object["bools"][2] == true:
 			array_object["bools"][2] = false

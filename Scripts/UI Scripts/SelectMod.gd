@@ -24,7 +24,7 @@ func _ready():
 		else:
 			return(self_play_error(3))
 			
-		$SelectMod.filters = PoolStringArray(["*.rngmod; RNGMOD File"])
+		$SelectMod.filters = PoolStringArray(["*.gd; GD File"])
 		
 	elif($SelectMod.access == $SelectMod.ACCESS_USERDATA):
 		$SelectMod.current_dir = "user://"
@@ -51,13 +51,24 @@ func self_play_error(err_code:int):
 
 func _on_SelectMod_file_selected(path):
 	var modContents = Global.loadFromFile(path)
+	var dir = Directory.new()
 	var filename = String(path).split("/")[String(path).split("/").size()-1]
-	if not String(modContents.split("\n")[0]).begins_with("MOD_ID"):
+	dir.open("user://")
+	
+	if not filename.ends_with(".gd"):
 		return(self_play_error(1))
 	print(path)
-	if not viewData: Global.writeToFile("user://" + filename, Global.loadFromFile(path))
+	if not dir.dir_exists("mods"):
+		dir.make_dir("mods")
+	if not viewData: Global.writeToFile("user://mods/" + filename, Global.loadFromFile(path))
 	if not viewData: Global.writeToFile("user://logs/" + filename + ".log", "========Begin logging for " + filename + "========\n\n" + modContents)
 	if viewData: print("============Begin Load of " + path + "============\n\n" + Global.loadFromFile(path) + "\n\n=============End Load of " + path + "=============")
+	if not Global.fileDoesExist("loaded-mods.dat"):
+		Global.writeToFile("user://loaded-mods.dat", filename)
+	else:
+		Global.writeToFile("user://loaded-mods.dat", Global.loadFromFile("loaded-mods.dat") + ":" + filename)
+		
+	ModLoader.load_mods()
 
 func _on_SelectMod_confirmed():
 	print($SelectMod.current_path)

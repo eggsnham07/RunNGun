@@ -1,16 +1,18 @@
 extends Node
 
+var mods:PoolStringArray = []
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var extenalMods:PoolStringArray = []
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	load_mods()
+	
+func load_mods():
+	var dir = Directory.new()
+	dir.open("user://")
+	
+	if dir.dir_exists("mods"):
+		mods = Global.list_files_in_directory("user://mods")
+		for m in mods.size():
+			load("user://mods/" + mods[m]).main()
+			print("Loaded mod: " + mods[m].split(".")[0])
