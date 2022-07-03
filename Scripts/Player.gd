@@ -20,8 +20,8 @@ onready var Projectile = preload("res://Scenes/Player/Projectile.tscn")
 func _ready():
 	Global.Player = self
 	
-	if Global.fileDoesExist("skin.dat"):
-		skin = String(Global.loadFromFile("skin.dat")).split("=")[1]
+	if Global.fileDoesExist("res://skin.dat"):
+		skin = String(Global.loadFromFile("res://skin.dat")).split("=")[1]
 	
 	RunAnim = skin.capitalize() + "Run"
 	IdleAnim = skin.capitalize() + "Idle"
