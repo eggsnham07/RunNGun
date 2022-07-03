@@ -46,7 +46,7 @@ margin_right = 94.0
 margin_bottom = 42.0
 custom_colors/font_color = Color( 0, 0.886275, 0.180392, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "Debug"
+text = "Release"
 
 [node name="Mode2" type="Label" parent="Layer/Titles"]
 margin_left = 48.0
