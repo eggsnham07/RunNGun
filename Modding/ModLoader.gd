@@ -1,6 +1,7 @@
 extends Node
 
 var mods:PoolStringArray = []
+var LOADER_VER = 1.1
 
 export var extenalMods:PoolStringArray = []
 	
@@ -19,15 +20,15 @@ func load_mods(data):
 					error.get_node("Popup/Oops").text = "Mod: '" + mods[m] + "' is missing attribute:\n\nMOD_NAME"
 					get_parent().call_deferred("add_child", error)
 					
-				if not load("user://mods/" + mods[m]).new().get("GAME_VER"):
-					error.get_node("Popup").set_size(Vector2(350, 80))
-					error.get_node("Popup/Oops").text = "Mod: '" + mods[m] + "' is missing attribute:\n\nGAME_VER"
-					get_parent().call_deferred("add_child", error)
+				if not load("user://mods/" + mods[m]).new().get("LOADER_VER"):
+					print("Mod '" + mods[m].split(".gd")[0] + "' does not specify a loader version!\nIgnoring and using ver " + String(self.LOADER_VER))
 					
-				if load("user://mods/" + mods[m]).new().get("GAME_VER") && not load("user://mods/" + mods[m]).new().GAME_VER == Global.GAME_VER:
-					error.get_node("Popup").set_size(Vector2(475, 80))
-					error.get_node("Popup/Oops").text = "[WARNING] Mod: '" + mods[m] + "' is outdated! mod version:\n" + String(load("user://mods/" + mods[m]).new().GAME_VER) + "\n[WARNING]: Mod may not work"
-					get_parent().call_deferred("add_child", error)
+				if load("user://mods/" + mods[m]).new().get("LOADER_VER"):
+					if load("user://mods/" + mods[m]).new().LOADER_VER > self.LOADER_VER:
+						error.get_node("Popup").set_size(Vector2(550, 80))
+						error.get_node("Popup/Oops").text = "Mod: '" + mods[m] + "' is using a newer loader version: " + String(load("user://mods/" + mods[m]).new().LOADER_VER)
+						error.get_node("Popup/Oops").text += "\n\nCurrent loader: " + String(self.LOADER_VER)
+						get_parent().call_deferred("add_child", error)
 				load("user://mods/" + mods[m]).new().main(data)
 				print("Loaded mod: " + mods[m].split(".")[0])
 				

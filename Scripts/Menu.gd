@@ -23,12 +23,12 @@ onready var array_object = {
 func _ready():
 	Global.Player = null
 	if Global.debug_mode: 
-		var stats = preload("res://Scenes/UIs/DevStats.tscn")
+		#var stats = preload("res://Scenes/UIs/DevStats.tscn")
 		OS.window_fullscreen = false
-		get_parent().call_deferred(
-			"add_child",
-			stats.instance()
-		)
+		#get_parent().call_deferred(
+		#	"add_child",
+		#	stats.instance()
+		#)
 		
 	var execPath = OS.get_executable_path()
 	if debug_mode: print(execPath)

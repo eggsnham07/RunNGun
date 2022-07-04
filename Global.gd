@@ -6,7 +6,6 @@ var node_size:int = 0
 var combo_mode:bool = false
 var combo_count:int = 0
 var Player = null
-var GAME_VER = "1.1.5"
 
 var data = {
 	"speed": 200
@@ -32,11 +31,17 @@ var input_array = {
 }
 
 func _ready():
-	pause_mode = Node.PAUSE_MODE_PROCESS
-	print(OS.get_name())
-	if debug_mode: BgMusic.stream_paused = true
+	pause_mode = Node.PAUSE_MODE_PROCESS # Allow Script to run when game is paused
+	if debug_mode: BgMusic.stream_paused = true # Pause music if in debug mode
 	
-	ModLoader.load_mods(self.data)
+	# ModLoader.load_mods(self.data)
+	
+	var args = Array(OS.get_cmdline_args())
+	for i in args.size():
+		if String(args[i]).find("-m") or OS.get_name() == "OSX" or debug_mode:
+			ModLoader.load_mods(self.data)
+			if OS.get_name() == "OSX":
+				print("Running on OSX, Mods allowed")
 	
 func fileDoesExist(filename:String):
 	var file = File.new()
@@ -303,3 +308,7 @@ func list_files_in_directory(path):
 			files.append(file)
 	dir.list_dir_end()
 	return files
+
+func add_game_stats():
+	var stats = preload("res://Scenes/UIs/DevStats.tscn")
+	get_parent().call_deferred("add_child", stats.instance())
