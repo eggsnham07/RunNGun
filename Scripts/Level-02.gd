@@ -14,7 +14,7 @@ func _on_Enemy2_died():
 func _on_Enemy4_died():
 	count += 1
 	
-func _process(delta):
+func _process(_delta):
 	if count == 4:
 		get_node("PlayerCam/YouWon").show()
 		get_node("PlayerCam/YouWon").hidden = false

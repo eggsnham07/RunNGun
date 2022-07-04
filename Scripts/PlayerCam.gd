@@ -15,7 +15,7 @@ func _ready():
 		$Right.show()
 		$Shoot.show()
 # Called when the node enters the scene tree for the first time.
-func _physics_process(delta):
+func _physics_process(_delta):
 	if get_parent().get_node("Player").movementAllowed: self.position.x = get_parent().get_node("Player").position.x
 
 

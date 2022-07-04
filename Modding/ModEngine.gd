@@ -4,6 +4,9 @@ class_name Mod
 var MOD_NAME = "Unnamed Mod"
 var LOADER_VER = 1.1
 
+func _ready():
+	print("[ModEngine]: Ready!")
+
 func add_game_stats():
 	Global.add_game_stats()
 

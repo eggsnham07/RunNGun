@@ -4,15 +4,15 @@ func _ready():
 	Global.Player = null
 
 func _on_Knight_pressed():
-	Global.writeToFile("skin.dat", "skin=knight")
+	Global.writeToFile("user://skin.dat", "skin=knight")
 	_on_Back_pressed()
 
 func _on_Nerd_pressed():
-	Global.writeToFile("skin.dat", "skin=nerd")
+	Global.writeToFile("user://skin.dat", "skin=nerd")
 	_on_Back_pressed()
 
 func _on_Monk_pressed():
-	Global.writeToFile("skin.dat", "skin=monk")
+	Global.writeToFile("user://skin.dat", "skin=monk")
 	_on_Back_pressed()
 
 func _on_Back_pressed():

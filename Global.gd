@@ -1,6 +1,6 @@
 extends Node
 
-var debug_mode:bool = OS.is_debug_build()
+var debug_mode:bool = (!OS.has_feature("standalone"))
 var bool_size:int = 0
 var node_size:int = 0
 var combo_mode:bool = false
@@ -36,9 +36,16 @@ func _ready():
 	
 	# ModLoader.load_mods(self.data)
 	
+	print("Debug Mode: " + String(debug_mode))
+	
+	if debug_mode:
+		ModLoader.load_mods(self.data)
+	
 	var args = Array(OS.get_cmdline_args())
 	for i in args.size():
-		if String(args[i]).find("-m") or OS.get_name() == "OSX" or debug_mode:
+		print(args)
+		if String(args[i]).find("-m") or OS.get_name() == "OSX":
+			print("Loading Mods")
 			ModLoader.load_mods(self.data)
 			if OS.get_name() == "OSX":
 				print("Running on OSX, Mods allowed")
@@ -201,8 +208,8 @@ func reload_settings():
 	if loadFromFile("user://vsync.cfg") == "True":
 		vsync = true
 		
-	if not fileDoesExist("res://skin.dat"):
-		writeToFile("res://skin.dat", "skin=knight")
+	if not fileDoesExist("user://skin.dat"):
+		writeToFile("user://skin.dat", "skin=knight")
 		
 	Engine.target_fps = FPS
 	OS.window_fullscreen = fullscreen
@@ -277,23 +284,6 @@ func _input(event):
 							if debug_mode: print("Wrong key!\n", event.as_text())
 							combo_mode = false
 							combo_count = 0
-			if get_tree().current_scene.name == "Menu":
-				if combo_mode:
-					if combo_count == input_array.devmode.size()-1 and not event.is_echo():
-						print("Dev mode enabled")
-						var stats = preload("res://Scenes/UIs/DevStats.tscn")
-						if debug_mode == false: 
-							debug_mode = true
-							get_parent().add_child(stats.instance())
-						combo_mode = false
-						combo_count = 0
-					if event.is_action(input_array.devmode[combo_count]) and not event.is_echo():
-						combo_count += 1
-					else:
-						if not event.is_echo():
-							if debug_mode: print("Wrong key!\n", event.as_text())
-							combo_mode = false
-							combo_count = 0
 							
 func list_files_in_directory(path):
 	var files = []
@@ -308,7 +298,9 @@ func list_files_in_directory(path):
 			files.append(file)
 	dir.list_dir_end()
 	return files
+	
+# ModEngine stuff
+var stats = preload("res://Scenes/UIs/DevStats.tscn")
 
 func add_game_stats():
-	var stats = preload("res://Scenes/UIs/DevStats.tscn")
 	get_parent().call_deferred("add_child", stats.instance())

@@ -2,6 +2,8 @@ extends Node
 
 var mods:PoolStringArray = []
 var LOADER_VER = 1.1
+var all_mods_loaded = false
+var timer = null
 
 export var extenalMods:PoolStringArray = []
 	
@@ -31,5 +33,6 @@ func load_mods(data):
 						get_parent().call_deferred("add_child", error)
 				load("user://mods/" + mods[m]).new().main(data)
 				print("Loaded mod: " + mods[m].split(".")[0])
-				
-				#DevStats.set_mods(String(m+1))
+			if m == mods.size()-1:
+				print("[Mod Loader]: Done loading mods!")
+				all_mods_loaded = true

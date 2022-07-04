@@ -6,3 +6,4 @@ func _physics_process(_delta):
 		$Layer/Titles/Mode.text = "Debug"
 	else:
 		$Layer/Titles/Mode.text = "Release"
+	$Layer/Titles/Mode2.text = String(ModLoader.mods.size())
